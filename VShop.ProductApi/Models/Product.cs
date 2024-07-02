@@ -8,7 +8,7 @@
         public string? Description { get; set; }
         public long Stock { get; set; }
         public string? ImageUrl { get; set; }
-        public Category? Categories { get; set; }
+        public Category? Category { get; set; }
         public int CategoryId { get; set; }
     }
 }
