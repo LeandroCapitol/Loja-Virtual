@@ -35,7 +35,7 @@ namespace VShop.ProductApi.Controllers
             return Ok(categoriesDto);
         }
 
-        [HttpGet("{id : int}", Name = "GetCategory")]
+        [HttpGet("{id:int}", Name = "GetCategory")]
         public async Task<ActionResult<IEnumerable<CategoryDTO>>> Get(int id)
         {
             var categoriesDto = await _categoryService.GetCategoryById(id);
@@ -57,8 +57,8 @@ namespace VShop.ProductApi.Controllers
                     categoryDto);
         }
 
-        [HttpPut("{id : int}")]
-        public async Task<ActionResult> Put(int id,[FromBody] CategoryDTO categoryDto)
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> Put(int id, [FromBody] CategoryDTO categoryDto)
         {
             if (id != categoryDto.CategoryId)
                 return BadRequest();

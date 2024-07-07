@@ -25,7 +25,7 @@ namespace VShop.ProductApi.Controllers
             return Ok(productDto);
         }
 
-        [HttpGet("{id : int}", Name = "GetProduct")]
+        [HttpGet("{id:int}", Name = "GetProduct")]
         public async Task<ActionResult<IEnumerable<ProductDTO>>> Get(int id)
         {
             var productDto = await _productService.GetProductById(id);
@@ -43,18 +43,18 @@ namespace VShop.ProductApi.Controllers
 
             await _productService.AddProduct(productDto);
 
-            return new CreatedAtRouteResult("GetProduct", new { id = productDto.CategoryId },
+            return new CreatedAtRouteResult("GetProduct", new { id = productDto.id },
                     productDto);
         }
 
-        [HttpPut("{id : int}")]
+        [HttpPut("{id:int}")]
         public async Task<ActionResult> Put(int id, [FromBody] ProductDTO productDTO)
         {
-            if (id != productDTO.CategoryId)
-                return BadRequest();
+            if (id != productDTO.id)
+                return BadRequest("Data Invalid");
 
             if (productDTO is null)
-                return BadRequest();
+                return BadRequest("Data Invalid");
 
             await _productService.UpdateProduct(productDTO);
 
